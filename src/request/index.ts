@@ -16,3 +16,10 @@ export const addDiscussion = async (body: { text: string }) => {
         console.log(e)
     }
 }
+export const postview= async() =>{
+    try{
+            await request.post(`/view/${import.meta.env.VITE_APP_USER_ID}`)
+    }catch(e){
+    }    
+     
+}

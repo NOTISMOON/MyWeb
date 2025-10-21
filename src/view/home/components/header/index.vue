@@ -52,8 +52,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import { IconMenuFold, IconMenuUnfold } from '@arco-design/web-vue/es/icon'
+import { ref} from 'vue'
+import IconMenuFold from '@arco-design/web-vue/es/icon/icon-menu-fold';
+import IconMenuUnfold from '@arco-design/web-vue/es/icon/icon-menu-unfold';
 const isScrolled = ref(false)
 const mobileMenuOpen = ref(false)
 
@@ -62,6 +63,3 @@ const toggleMobileMenu = () => {
 }
 </script>
 
-<style scoped>
-/* 这里可以添加组件专属样式 */
-</style>

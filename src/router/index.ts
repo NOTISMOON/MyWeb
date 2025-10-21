@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.VITE_APP_BASE),
-
     routes: [
         {
             path: '/home',
@@ -14,17 +13,6 @@ const router = createRouter({
             redirect: '/home'
         }
     ]
-    // scrollBehavior(to, from, savedPosition) {
-    //     if (to.hash) {
-    //         // 跳转到锚点
-    //         return {
-    //             el: to.hash,
-    //             behavior: 'smooth'
-    //         }
-    //     } else {
-    //         return { top: 0 }
-    //     }
-    // }
 })
 
 export default router
