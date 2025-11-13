@@ -14,7 +14,7 @@
                 <div
                     v-for="(item, index) in articalList"
                     :key="index"
-                    class="w-[20rem] aspect-square card-gradient rounded-2xl shadow-xl hover-lift p-6 border border-gray-800 flex flex-col"
+                    class="w-[18rem] aspect-square card-gradient rounded-2xl shadow-xl hover-lift p-6 border border-gray-800 flex flex-col"
                 >
                     <!-- 文章类型标签 -->
                     <div class="mb-3">

@@ -17,7 +17,6 @@
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/vite": "^4.1.14",
-    "@types/node": "^22.15.30",
     "axios": "^1.12.2",
     "md-editor-v3": "^6.0.1",
     "pinia": "^3.0.3",
@@ -27,6 +26,7 @@
   "devDependencies": {
     "@arco-design/web-vue": "^2.38.0",
     "@eslint/js": "^9.28.0",
+    "@types/node": "^24.9.2",
     "@types/prismjs": "^1.26.5",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/tsconfig": "^0.7.0",

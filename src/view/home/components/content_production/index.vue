@@ -72,9 +72,7 @@ import { computed } from 'vue'
 
 const props = defineProps<{ modelValue: ProductionAPI[] }>()
 const data = computed(() => {
-    props.modelValue.forEach(
-        (i) => (i.image = import.meta.env.VITE_APP_BASE_URL + '/xya/' + i.image)
-    )
+    props.modelValue.forEach((i) => (i.image = import.meta.env.VITE_APP_BASE_URL + i.image))
     return props.modelValue
 })
 </script>

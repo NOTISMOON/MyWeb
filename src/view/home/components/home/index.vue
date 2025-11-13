@@ -35,9 +35,9 @@
                         <!-- 头像 -->
                         <!-- 个人信息 -->
                         <div class="text-center mb-4 sm:mb-6">
-                            <h3 class="text-xl sm:text-2xl font-bold mb-1">如果是帅哥</h3>
+                            <h3 class="text-xl sm:text-2xl font-bold mb-1">个人简介</h3>
                             <p class="text-primary font-medium text-[7px] sm:text-[10px]">
-                                可惜没如果...
+                              
                             </p>
                         </div>
                         <div
@@ -100,7 +100,6 @@
                 </div>
             </div>
         </div>
-
         <!-- 滚动指示器 -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
             <i class="fa fa-angle-down text-2xl text-primary"></i>
@@ -116,8 +115,9 @@ const data = computed(() => {
     return {
         ...props.modelValue,
         avatar: {
-            avatar: import.meta.env.VITE_APP_BASE_URL + '/xya/' + props.modelValue.avatar.avatar
+            avatar: import.meta.env.VITE_APP_BASE_URL + props.modelValue.avatar.avatar
         }
     }
 })
+console.log(data.value.avatar.avatar)
 </script>

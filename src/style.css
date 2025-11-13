@@ -15,7 +15,6 @@
   .content-auto {
     content-visibility: auto;
   }
-
   .text-gradient {
     background-clip: text;
     -webkit-background-clip: text;
@@ -58,32 +57,29 @@
 	scroll-behavior: smooth;
 }
 html,body{
+  position: relative;
 	width: 100%;
 	height: 100%;
 	margin: 0;
 	font-size: 16px;
 	padding: 0;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE, Edge */
+  /* scrollbar-width: none; 
+  -ms-overflow-style: none;  */
 }
 @media screen and (min-width: 790px) {
   html,
   body {
-    font-size: 1.1vw;
+    font-size: 1.2vw;
   }
 }
-
-
 html::-webkit-scrollbar, 
 body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  display: none;/* Chrome, Safari */
 }
-
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px; /* 你的导航栏高度 */
 }
-
 /* 兼容 iOS */
 body {
   min-height: 100vh;
@@ -98,6 +94,6 @@ section {
 
 /* 导航栏用 sticky 增强兼容性 */
 #navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
 }

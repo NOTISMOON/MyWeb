@@ -15,7 +15,6 @@ import { onMounted } from 'vue'
 // import type { ArticalAPI } from '@/api.type/artical.type'
 import { userstore } from '@store/user.store'
 const store = userstore()
-
 onMounted(async () => {
     await store.GetuserInof()
     console.log(store.userInof)

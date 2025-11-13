@@ -11,6 +11,16 @@ const router = createRouter({
         {
             path: '/',
             redirect: '/home'
+        },
+        {
+            path: '/video',
+            name: 'video',
+            component: () => import('@view/video/index.vue')
+        },
+        {
+            name: 'player',
+            path: '/player/:id?',
+            component: () => import('@view/video/player/index.vue')
         }
     ]
 })
