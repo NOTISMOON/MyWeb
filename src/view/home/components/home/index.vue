@@ -37,7 +37,7 @@
                         <div class="text-center mb-4 sm:mb-6">
                             <h3 class="text-xl sm:text-2xl font-bold mb-1">个人简介</h3>
                             <p class="text-primary font-medium text-[7px] sm:text-[10px]">
-                              
+                        
                             </p>
                         </div>
                         <div
@@ -115,7 +115,7 @@ const data = computed(() => {
     return {
         ...props.modelValue,
         avatar: {
-            avatar: import.meta.env.VITE_APP_BASE_URL + props.modelValue.avatar.avatar
+            avatar: import.meta.env.VITE_APP_BASE_URL + props.modelValue.avatar?.avatar
         }
     }
 })

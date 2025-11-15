@@ -34,12 +34,10 @@
                     <div class="text-sm text-gray-400 mb-4">
                         {{ item.createTime }}
                     </div>
-
                     <!-- 文章内容摘要 -->
                     <p class="text-gray-300 text-sm line-clamp-6 flex-grow">
-                        <MdPreview :id="id" :modelValue="item.content.slice(0, 100)" />
+                        <MdPreview :id="id" :modelValue="item.content.slice(0,30)" />
                     </p>
-
                     <!-- 阅读更多按钮 -->
                     <div
                         class="mt-4 inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium transition-colors"
@@ -70,12 +68,12 @@
         <!-- 蒙层 -->
         <div
             v-show="isOpen"
-            class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            class="fixed inset-0 bg-black/50 backdrop-blur-sm z-100 flex items-center justify-center p-4"
             @click="closeModal"
         >
             <!-- 弹窗容器 -->
-            <div
-                class="bg-dark border border-gray-800 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col transform transition-all"
+            <div id="sss"
+                class=" relative bg-dark border border-gray-800 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col transform transition-all"
                 @click.stop
             >
                 <!-- 弹窗头部 -->
@@ -93,7 +91,7 @@
                 <div class="p-6 overflow-y-auto flex-grow">
                     <!-- 这里用 v-md-preview 渲染文章内容 -->
                     <MdPreview :id="id" :modelValue="article?.content" />
-                    <MdCatalog :editorId="id" :scrollElement="scrollElement" />
+                    <MdCatalog :editorId="id" :scrollElement="scrollElement" :isScrollElementInShadow="true"/>
                 </div>
 
                 <!-- 弹窗底部 -->
@@ -121,7 +119,7 @@ import { MdPreview, MdCatalog } from 'md-editor-v3'
 // preview.css相比style.css少了编辑器那部分样式
 import 'md-editor-v3/lib/preview.css'
 const id = 'preview-only'
-const scrollElement = document.documentElement
+const scrollElement = document.documentElement.querySelector('#sss') as HTMLElement
 const props = defineProps<{ modelValue: ArticalAPI[] }>()
 const data = computed(() => props.modelValue)
 const isOpen = ref(false)
