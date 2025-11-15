@@ -188,7 +188,7 @@
                                     </svg>
                                 </button>
                                 <div
-                                    class="absolute bottom-full left-0 mb-2 bg-dark bg-blur rounded-md shadow-xl w-24 hidden group-hover:block transition-all duration-200 origin-bottom"
+                                    class="absolute bottom-full left-0 mb-2 bg-dark bg-blur rounded-md shadow-xl w-24 opacity-0 group-hover:opacity-100 transition-all duration-200 origin-bottom"
                                 >
                                     <button
                                         v-for="rate in playbackRates"
