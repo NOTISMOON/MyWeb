@@ -5,7 +5,7 @@
                 <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-4">
                     技术<span class="text-primary">博文</span>
                 </h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">哈哈哈这个人很懒什么也没有留下</p>
+                <p class="text-gray-400 max-w-2xl mx-auto" v-if="!articalList.length">哈哈哈这个人很懒什么也没有留下</p>
             </div>
 
             <div
