@@ -21,7 +21,9 @@ export const addDiscussion = async (body: { text: string }) => {
 }
 export const postview = async () => {
     try {
-        await request.post(`/view/${import.meta.env.VITE_APP_USER_ID}`)
+    const res=    await request.post(`/view/${import.meta.env.VITE_APP_USER_ID}`)
+        console.log(res)
+        console.log(22222)
     } catch (e) {}
 }
 export const getVideoList = async (page: number = 1, size: number = 10) => {

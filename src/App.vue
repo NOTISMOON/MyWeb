@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { postview } from './request'
 
-window.onload = async () => {
-    if (window.location.href.includes('player')) return
-    await postview()
+window.onload = () => {
+    if (window.location.href.includes('player')) return;
+    console.log(1)
+    postview()
 }
 </script>
 <template>

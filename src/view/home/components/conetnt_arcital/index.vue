@@ -64,7 +64,6 @@
                 >收起更多</a-button
             >
         </div>
-
         <!-- 蒙层 -->
         <div
             v-show="isOpen"
@@ -73,7 +72,7 @@
         >
             <!-- 弹窗容器 -->
             <div id="sss"
-                class=" relative bg-dark border border-gray-800 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col transform transition-all"
+                class=" relative bg-dark border border-gray-800 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[100%] flex flex-col transform transition-all"
                 @click.stop
             >
                 <!-- 弹窗头部 -->
@@ -86,14 +85,12 @@
                         <i class="fa fa-times text-xl"></i>
                     </button>
                 </div>
-
                 <!-- 弹窗内容 -->
-                <div class="p-6 overflow-y-auto flex-grow">
+                <div class="p-6 overflow-y-auto flex-grow" id="ssss"  ref="scrollContainer">
                     <!-- 这里用 v-md-preview 渲染文章内容 -->
-                    <MdPreview :id="id" :modelValue="article?.content" />
-                    <MdCatalog :editorId="id" :scrollElement="scrollElement" :isScrollElementInShadow="true"/>
+                    <MdPreview :id="id" :modelValue="article?.content"/>
+                    <MdCatalog :editorId="id" :scrollElement="scrollElement " :isScrollElementInShadow="true"/>
                 </div>
-
                 <!-- 弹窗底部 -->
                 <div class="p-6 border-t border-gray-800 flex justify-between items-center">
                     <div class="text-gray-400 text-sm">
@@ -113,51 +110,48 @@
 </template>
 <script setup lang="ts">
 import type { ArticalAPI } from '@/api.type/artical.type'
-import { computed, watch } from 'vue'
-import { ref } from 'vue'
+import { computed, watch, ref, nextTick } from 'vue'
 import { MdPreview, MdCatalog } from 'md-editor-v3'
-// preview.css相比style.css少了编辑器那部分样式
 import 'md-editor-v3/lib/preview.css'
+
 const id = 'preview-only'
-const scrollElement = document.documentElement.querySelector('#sss') as HTMLElement
+const scrollContainer = ref<HTMLElement | null>(null)
+const scrollElement = computed(() => scrollContainer.value || undefined)
 const props = defineProps<{ modelValue: ArticalAPI[] }>()
 const data = computed(() => props.modelValue)
 const isOpen = ref(false)
-const Postdata = (value: ArticalAPI) => {
-    isOpen.value = true
-    article.value = value
-    console.log(value)
+
+const Postdata = async (value: ArticalAPI) => {
+  isOpen.value = true
+  article.value = value
+  await nextTick() // 等 DOM 更新，确保 scrollContainer.value 已存在
 }
-let article = ref<ArticalAPI>()
-const count = ref(8) // 初始显示 8 条
+
+let article = ref<ArticalAPI | null>(null)
+const count = ref(8)
 const articalList = ref<ArticalAPI[]>([])
-// 初始加载
+
 const loadArticals = async () => {
-    // 从 props.modelValue 截取前 count.value 条
-    articalList.value = props.modelValue.slice(0, count.value)
-    console.log(articalList.value.length, props.modelValue.length)
+  articalList.value = props.modelValue.slice(0, count.value)
 }
-// 点击加载更多
 const loadMore = () => {
-    count.value += 5 // 每次多加载 5 条
-    loadArticals()
+  count.value += 5
+  loadArticals()
 }
-//收起更多
 const loadclear = () => {
-    count.value = 8
-    articalList.value = articalList.value.slice(0, count.value)
+  count.value = 8
+  articalList.value = articalList.value.slice(0, count.value)
 }
 const closeModal = () => {
-    isOpen.value = false
+  isOpen.value = false
 }
+
 watch(
-    () => props.modelValue,
-    (newVal) => {
-        if (newVal.length > 0) {
-            loadArticals()
-        }
-    },
-    { immediate: true }
+  () => props.modelValue,
+  (newVal) => {
+    if (newVal.length > 0) loadArticals()
+  },
+  { immediate: true }
 )
 </script>
 <style scoped>
@@ -181,7 +175,6 @@ watch(
     color: #cbd5e1 !important;
     margin-bottom: 1rem;
 }
-
 /* 链接样式 */
 :deep(.md-editor-preview a) {
     color: #6366f1 !important;
