@@ -1,0 +1,1 @@
+@layer utilities{.content-auto{content-visibility:auto}.scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}.scrollbar-hide::-webkit-scrollbar{display:none}.aspect-video{aspect-ratio:16 / 9}}.animate-spin{animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
