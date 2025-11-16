@@ -11,7 +11,7 @@
                 <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-4">
                     项目<span class="text-primary">经历</span>
                 </h2>
-                <p class="text-gray-400 max-w-2xl mx-auto" v-if="data.length">哈哈哈哈这个人很懒什么也没有留下</p>
+                <p class="text-gray-400 max-w-2xl mx-auto" v-show="!props.modelValue.length">哈哈哈哈这个人很懒什么也没有留下</p>
             </div>
         </div>
         <div class="grid grid-cols-1 gap-8 justify-items-center">
@@ -68,13 +68,11 @@
 </template>
 <script setup lang="ts">
 import type { ProductionAPI } from '@/api.type/production.type'
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
+
 const props = defineProps<{ modelValue: ProductionAPI[] }>()
-const data = computed(() =>props.modelValue)
-onMounted(()=>{
-    data.value.map((i)=>{
-   i.image= import.meta.env.VITE_APP_BASE_URL+i.image
-   return  i
-    })
+const data = computed(() => {
+    props.modelValue.forEach((i) => (i.image = import.meta.env.VITE_APP_BASE_URL + i.image))
+    return props.modelValue
 })
 </script>

@@ -119,5 +119,4 @@ const data = computed(() => {
         }
     }
 })
-console.log(data.value.avatar.avatar)
 </script>
