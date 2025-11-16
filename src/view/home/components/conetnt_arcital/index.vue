@@ -72,7 +72,7 @@
         >
             <!-- 弹窗容器 -->
             <div id="sss"
-                class=" relative bg-dark border border-gray-800 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[100%] flex flex-col transform transition-all"
+                class=" relative bg-dark border border-gray-800 overflow-y-auto rounded-2xl shadow-2xl w-full max-w-4xl max-h-[100%] flex flex-col transform transition-all"
                 @click.stop
             >
                 <!-- 弹窗头部 -->
@@ -86,10 +86,9 @@
                     </button>
                 </div>
                 <!-- 弹窗内容 -->
-                <div class="p-6 overflow-y-auto flex-grow" id="ssss"  ref="scrollContainer">
+                <div class="p-6 overflow-y-auto flex-grow max-h-[100%]"  id="ssss"  ref="scrollContainer">
                     <!-- 这里用 v-md-preview 渲染文章内容 -->
-                    <MdPreview :id="id" :modelValue="article?.content"/>
-                    <MdCatalog :editorId="id" :scrollElement="scrollElement " :isScrollElementInShadow="true"/>
+                <MdPreview :id="id" :modelValue="article?.content"/>
                 </div>
                 <!-- 弹窗底部 -->
                 <div class="p-6 border-t border-gray-800 flex justify-between items-center">
@@ -120,7 +119,6 @@ const scrollElement = computed(() => scrollContainer.value || undefined)
 const props = defineProps<{ modelValue: ArticalAPI[] }>()
 const data = computed(() => props.modelValue)
 const isOpen = ref(false)
-
 const Postdata = async (value: ArticalAPI) => {
   isOpen.value = true
   article.value = value
@@ -130,7 +128,6 @@ const Postdata = async (value: ArticalAPI) => {
 let article = ref<ArticalAPI | null>(null)
 const count = ref(8)
 const articalList = ref<ArticalAPI[]>([])
-
 const loadArticals = async () => {
   articalList.value = props.modelValue.slice(0, count.value)
 }
